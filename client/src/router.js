@@ -15,11 +15,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Page />,
+        element: <Splash />,
       },
       {
-        path: "splash",
-        element: <Splash />,
+        path: "home",
+        element: <Page />,
       },
       {
         path: "tour",
