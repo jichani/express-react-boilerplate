@@ -2,6 +2,8 @@
 
 ## Babel 설치
 
+### Demo : 
+
 - npm install --save-dev @babel/core @babel/cli @babel/preset-env @babel/node
 - npm install --save-dev @babel/plugin-transform-runtime
 - npm install --save @babel/runtime # runtime 종속성, -dev 옵션 X
