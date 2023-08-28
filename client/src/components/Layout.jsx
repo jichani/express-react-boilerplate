@@ -10,7 +10,7 @@ export default function Layout({ children, isHeader, canGoBack, title, isFooter 
       <div className=" relative max-w-sm w-full bg-gray-200">
         {/* 헤더 */}
         {isHeader && (
-          <div className="w-full h-20 border-b border-neutral-300/50 grid grid-cols-3 items-center">
+          <div className="z-10 bg-white absolute top-0 w-full h-20 border-b border-neutral-300/50 grid grid-cols-3 items-center">
             {/* 1 */}
             <div className="text-gray-400">{canGoBack && <GoBack />}</div>
             {/* 2 */}
@@ -23,7 +23,7 @@ export default function Layout({ children, isHeader, canGoBack, title, isFooter 
         {children}
         {/* 푸터 */}
         {isFooter && (
-          <div className="absolute bottom-0 w-full h-[100px] grid grid-cols-5 gap-2 p-2 border-t-2 border-neutral-300 cursor-pointer">
+          <div className="z-10 bg-white absolute bottom-0 w-full h-[100px] grid grid-cols-5 gap-2 p-2 border-t-2 border-neutral-300 cursor-pointer">
             {menuItmes.map((item) => (
               <Link to={item.url} key={item.title}>
                 <div className="flex flex-col w-full h-full justify-center items-center space-y-1">
