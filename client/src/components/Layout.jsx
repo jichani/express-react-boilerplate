@@ -1,5 +1,6 @@
 import GoBack from "../asset/GoBack";
 import LogoAsset from "../asset/LogoAsset";
+import { menuItmes } from "../lib/menuItems";
 
 // 아무것도 프롭으로 안 주면 false가 되니까 상관없다.
 export default function Layout({ children, isHeader, canGoBack, title, isFooter }) {
@@ -20,7 +21,18 @@ export default function Layout({ children, isHeader, canGoBack, title, isFooter 
         {/* children */}
         {children}
         {/* 푸터 */}
-        {isFooter && <div className="absolute bottom-0 w-full h-[100px] grid grid-cols-5 gap-2 p-2 border-t-2 border-neutral-300">푸터</div>}
+        {isFooter && (
+          <div className="absolute bottom-0 w-full h-[100px] grid grid-cols-5 gap-2 p-2 border-t-2 border-neutral-300">
+            {menuItmes.map((item) => (
+              <div className="flex flex-col">
+                {/* 아이콘 */}
+                <div>{item.icon}</div>
+                {/* 타이틀 */}
+                <div>{item.title}</div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
