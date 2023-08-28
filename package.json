@@ -1,0 +1,20 @@
+{
+  "name": "yj-stamp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd client && npm ci && npm run build && rm -rf ../server/build && mv build ../server",
+    "start": "cd server && npm ci && node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  },
+  "dependencies": {
+    "react-query": "^3.39.3",
+    "react-router-dom": "^6.15.0"
+  }
+}
