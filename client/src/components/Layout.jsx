@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import GoBack from "../asset/GoBack";
 import LogoAsset from "../asset/LogoAsset";
 import { menuItmes } from "../lib/menuItems";
@@ -22,14 +23,16 @@ export default function Layout({ children, isHeader, canGoBack, title, isFooter 
         {children}
         {/* 푸터 */}
         {isFooter && (
-          <div className="absolute bottom-0 w-full h-[100px] grid grid-cols-5 gap-2 p-2 border-t-2 border-neutral-300">
+          <div className="absolute bottom-0 w-full h-[100px] grid grid-cols-5 gap-2 p-2 border-t-2 border-neutral-300 cursor-pointer">
             {menuItmes.map((item) => (
-              <div className="flex flex-col">
-                {/* 아이콘 */}
-                <div>{item.icon}</div>
-                {/* 타이틀 */}
-                <div>{item.title}</div>
-              </div>
+              <Link to={item.url} key={item.title}>
+                <div className="flex flex-col w-full h-full justify-center items-center space-y-1">
+                  {/* 아이콘 */}
+                  <div>{item.icon}</div>
+                  {/* 타이틀 */}
+                  <div className=" uppercase text-xs">{item.title}</div>
+                </div>
+              </Link>
             ))}
           </div>
         )}

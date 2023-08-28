@@ -2,6 +2,10 @@ import { Outlet, createBrowserRouter } from "react-router-dom";
 import NotFound from "./app/NotFound";
 import Splash from "./app/Splash";
 import Page from "./Page";
+import Tour from "./app/Tour";
+import Qr from "./app/Qr";
+import Favorite from "./app/Favorite";
+import Menu from "./app/Menu";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +20,24 @@ const router = createBrowserRouter([
       {
         path: "splash",
         element: <Splash />,
-      }
+      },
+      {
+        path: "tour",
+        element: <Tour />
+      },
+      {
+        path: "qr",
+        element: <Qr />
+      },
+      {
+        path: "favorite",
+        element: <Favorite />
+      },
+      {
+        path: "menu",
+        element: <Menu />
+      },
+
     ]
   }
 ]);
