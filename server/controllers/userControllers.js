@@ -50,8 +50,25 @@ export const postLogin = async (req, res) => {
 };
 
 export const loginSuccess = async (req, res) => {
-  const { accessToken } = req.cookies;
+  try {
+    const { accessToken } = req.cookies;
 
-  const tempData = jwt.verify(accessToken, process.env.ACCESS_SECRET);
-  console.log(tempData);
+    const tempData = jwt.verify(accessToken, process.env.ACCESS_SECRET);
+    const id = tempData?.id;
+
+    const loggedInUser = await User.findById(id);
+    const { username, mobile, email, name, auth } = loggedInUser;
+
+    return res.status(200).json({
+      ok: true,
+      username,
+      mobile,
+      email,
+      name,
+      auth,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ ok: false });
+  }
 };
