@@ -2,9 +2,13 @@ import { Link } from "react-router-dom";
 import GoBack from "../asset/GoBack";
 import LogoAsset from "../asset/LogoAsset";
 import { menuItmes } from "../lib/menuItems";
+import useUser from "../hooks/useUser";
 
 // 아무것도 프롭으로 안 주면 false가 되니까 상관없다.
 export default function Layout({ children, isHeader, canGoBack, title, isFooter }) {
+  const { user } = useUser();
+  console.log(user);
+
   return (
     <div className="w-full flex justify-center min-h-screen">
       <div className=" relative max-w-sm w-full bg-gray-200">

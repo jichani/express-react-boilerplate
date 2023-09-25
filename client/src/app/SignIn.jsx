@@ -1,6 +1,6 @@
 import { Button, Input } from "@material-tailwind/react";
 import Layout from "../components/Layout";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { userLogin } from "../api";
@@ -8,10 +8,13 @@ import { userLogin } from "../api";
 export default function SignIn() {
   const { register, handleSubmit } = useForm();
   const { mutate, data } = useMutation(userLogin);
+  const navigate = useNavigate();
   const onSubmit = (data) => {
     mutate(data);
   };
-  console.log(data);
+  if (data?.ok === true) {
+    navigate("/home");
+  }
 
   return (
     <Layout isHeader>

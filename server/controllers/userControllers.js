@@ -47,4 +47,11 @@ export const postLogin = async (req, res) => {
     console.log(error);
     return res.status(500).json({ ok: false, message: "로그인에 실패했습니다!!!" })
   }
-}
+};
+
+export const loginSuccess = async (req, res) => {
+  const { accessToken } = req.cookies;
+
+  const tempData = jwt.verify(accessToken, process.env.ACCESS_SECRET);
+  console.log(tempData);
+};

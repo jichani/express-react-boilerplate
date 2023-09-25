@@ -28,3 +28,13 @@ export async function userLogin(props) {
     }),
   });
 }
+
+export async function loginSuccess() {
+  return await fetch(`/api/users/signin/success`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  }).then((res) => res.json());
+};
