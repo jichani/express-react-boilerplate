@@ -10,6 +10,7 @@ import TourDetail from "./app/TourDetail";
 import SignUp from "./app/SignUp";
 import SignIn from "./app/SignIn";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedLogin from "./components/ProtectedLogin";
 
 const router = createBrowserRouter([
   {
@@ -47,11 +48,11 @@ const router = createBrowserRouter([
       },
       {
         path: "signup",
-        element: <SignUp />
+        element: <ProtectedLogin><SignUp /></ProtectedLogin>
       },
       {
         path: "signin",
-        element: <SignIn />
+        element: <ProtectedLogin><SignIn /></ProtectedLogin>
       },
     ]
   }
