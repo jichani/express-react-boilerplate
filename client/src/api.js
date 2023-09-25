@@ -14,3 +14,17 @@ export async function userRegister(props) {
     }),
   });
 }
+
+export async function userLogin(props) {
+  return await fetch(`/api/users/signin`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify({
+      username: props.username,
+      password: props.password,
+    }),
+  });
+}
