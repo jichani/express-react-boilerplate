@@ -54,8 +54,8 @@ const router = createBrowserRouter([
         path: "signin",
         element: <ProtectedLogin><SignIn /></ProtectedLogin>
       },
-    ]
-  }
+    ],
+  },
 ]);
 
 export default router;
