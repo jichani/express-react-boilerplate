@@ -7,7 +7,7 @@ export async function userRegister(props) {
     credentials: "include",
     body: JSON.stringify({
       username: props.username,
-      id: props.id,
+      name: props.name,
       password: props.password,
       mobile: props.mobile,
       email: props.email,

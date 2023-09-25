@@ -8,12 +8,14 @@ import { userRegister } from "../api";
 
 export default function SignUp() {
   const [passwordShown, setPasswordShown] = useState(false);
-
   const { handleSubmit, register } = useForm({ mode: "onChange" });
-  const { mutate } = useMutation(userRegister);
+  const { mutate, data } = useMutation(userRegister);
+
   const onSubmit = (data) => {
     mutate(data);
   };
+
+  console.log(data);
 
   return (
     <Layout isHeader>
@@ -29,12 +31,12 @@ export default function SignUp() {
             <div className="space-y-4">
               {/* 이름 */}
               <div className="">
-                <Input {...register("username")} type="text" label="이름" className="pr-20 focus:ring-0" containerProps={{ className: "min-w-0" }} />
+                <Input {...register("name")} type="text" label="이름" className="pr-20 focus:ring-0" containerProps={{ className: "min-w-0" }} />
               </div>
 
               {/* 아이디 */}
               <div>
-                <Input {...register("id")} type="text" label="아이디" className="pr-20 focus:ring-0" containerProps={{ className: "min-w-0" }}></Input>
+                <Input {...register("username")} type="text" label="아이디" className="pr-20 focus:ring-0" containerProps={{ className: "min-w-0" }}></Input>
               </div>
 
               {/* 패스워드 */}
@@ -46,9 +48,11 @@ export default function SignUp() {
                   className="pr-20 focus:ring-0"
                   containerProps={{ className: "min-w-0" }}
                 />
-                <Button onClick={() => setPasswordShown(!passwordShown)} size="sm" className="absolute right-1 bottom-0 rounded w-16 my-1">
-                  {passwordShown ? "hidden" : "show"}
-                </Button>
+                <div className=" absolute top-1/2 -translate-y-1">
+                  <Button onClick={() => setPasswordShown(!passwordShown)} size="sm" className="absolute right-1 bottom-0 rounded w-16 my-1">
+                    {passwordShown ? "hidden" : "show"}
+                  </Button>
+                </div>
               </div>
 
               {/* 모바일 */}

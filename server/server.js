@@ -4,6 +4,7 @@ import path from "path";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import userRouter from "./routers/userRouter.js";
+import "./db.js";
 
 const PORT = 8080;
 const __dirname = path.resolve();
