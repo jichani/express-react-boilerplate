@@ -1,0 +1,11 @@
+import { Navigate } from "react-router-dom";
+import useUser from "../hooks/useUser";
+
+export default function ProtectedRoute({ children }) {
+  const { isLoggedIn } = useUser();
+  if (!isLoggedIn) {
+    return <Navigate to="/signin" />;
+  } else {
+    return children;
+  }
+}

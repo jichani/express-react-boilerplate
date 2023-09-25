@@ -9,6 +9,7 @@ import Menu from "./app/Menu";
 import TourDetail from "./app/TourDetail";
 import SignUp from "./app/SignUp";
 import SignIn from "./app/SignIn";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -30,15 +31,15 @@ const router = createBrowserRouter([
       },
       {
         path: "qr",
-        element: <Qr />
+        element: <ProtectedRoute><Qr /></ProtectedRoute>
       },
       {
         path: "favorite",
-        element: <Favorite />
+        element: <ProtectedRoute><Favorite /></ProtectedRoute>
       },
       {
         path: "menu",
-        element: <Menu />
+        element: <ProtectedRoute><Menu /></ProtectedRoute>
       },
       {
         path: "tour/:id",
