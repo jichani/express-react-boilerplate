@@ -29,12 +29,12 @@ export default function SignIn() {
             <div className="space-y-4">
               {/* 아이디 */}
               <div>
-                <Input {...register("username")} type="text" label="아이디" classNmae="pr-20 focus:ring-0" containerProps={{ className: "min-w-0" }}></Input>
+                <Input {...register("username")} type="text" label="아이디" className="pr-20 focus:ring-0" containerProps={{ className: "min-w-0" }}></Input>
               </div>
 
               {/* 패스워드 */}
               <div>
-                <Input {...register("password")} type="password" label="패스워드" classNmae="pr-20 focus:ring-0" containerProps={{ className: "min-w-0" }} />
+                <Input {...register("password")} type="password" label="패스워드" className="pr-20 focus:ring-0" containerProps={{ className: "min-w-0" }} />
               </div>
 
               {/* 버튼 */}

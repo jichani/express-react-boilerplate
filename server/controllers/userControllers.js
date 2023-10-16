@@ -57,7 +57,7 @@ export const loginSuccess = async (req, res) => {
     const id = tempData?.id;
 
     const loggedInUser = await User.findById(id);
-    const { username, mobile, email, name, auth } = loggedInUser;
+    const { username, mobile, email, name, auth, _id, missionCompleted } = loggedInUser;
 
     return res.status(200).json({
       ok: true,
@@ -66,9 +66,44 @@ export const loginSuccess = async (req, res) => {
       email,
       name,
       auth,
+      id: _id,
+      missionCompleted,
     });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ ok: false });
   }
 };
+
+export const postAddMission = async (req, res) => {
+  try {
+    // req.body.userId, req.body.missionId
+    const { body: { userId, missionId } } = req;
+
+    const existing = await User.findById(userId)
+
+    if (!existing) {
+      return res.json({ result: 1, message: "로그인 정보가 없습니다." });
+    }
+
+    // 이미 완료된 QR 코드 일때
+    if (existing.missionCompleted.includes(missionId)) {
+      return res.json({ result: 3, message: "이미 승인된 QR 코드입니다." })
+    }
+
+    // 정해진 QR 코드가 아닐 때 에러 처리
+    const qrData = ["sun", "rain", "cloudy", "moant_visited", "GUKBOB"];
+
+    if (!qrData.includes(missionId)) {
+      console.log("유효하지 않은 QR 코드입니다.");
+      return res.json({ result: 2, message: "유효하지 않은 QR 코드입니다." })
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(userId, { $push: { missionCompleted: missionId } });
+
+    return res.status(200).json({ result: 0, message: "QR 인증 성공", updatedUser });
+
+  } catch (error) {
+    console.log(error);
+  }
+}

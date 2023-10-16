@@ -1,10 +1,11 @@
 import express from "express";
-import { loginSuccess, postJoin, postLogin } from "../controllers/userControllers.js";
+import { loginSuccess, postAddMission, postJoin, postLogin } from "../controllers/userControllers.js";
 
 const userRouter = express.Router();
 
 userRouter.post("/signup", postJoin);
 userRouter.post("/signin", postLogin);
 userRouter.get("/signin/success", loginSuccess);
+userRouter.post("/mission/add", postAddMission);
 
 export default userRouter;
